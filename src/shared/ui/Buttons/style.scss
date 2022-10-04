@@ -1,0 +1,13 @@
+.button {
+  @apply border-0;
+  @apply py-2.5;
+  @apply w-full;
+  @apply rounded-lg;
+  @apply text-base;
+  @apply font-semibold;
+
+  &--primary {
+    @apply bg-primary-600;
+    @apply text-white;
+  }
+}

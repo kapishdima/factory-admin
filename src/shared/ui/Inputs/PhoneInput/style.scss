@@ -1,0 +1,10 @@
+.iti {
+  @apply flex;
+  @apply w-full;
+}
+
+.iti--allow-dropdown .iti__flag-container,
+.iti--separate-dial-code .iti__flag-container {
+  @apply rounded-tl-lg;
+  @apply rounded-bl-lg;
+}

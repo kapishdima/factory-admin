@@ -1,4 +1,4 @@
-import { SignInPage } from 'pages';
+import { SignInPage, SignUpPage } from 'pages';
 import { RouteObject } from 'react-router-dom';
 
 export const routes: RouteObject[] = [
@@ -14,7 +14,7 @@ export const routes: RouteObject[] = [
   },
   {
     path: '/sign-up',
-    element: <div>Sign Up</div>,
+    element: <SignUpPage />,
     loader: () => {},
   },
   {

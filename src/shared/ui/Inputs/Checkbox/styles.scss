@@ -1,0 +1,25 @@
+.checkbox {
+  @apply cursor-pointer;
+  @apply select-none;
+
+  &-input {
+    @apply hidden;
+  }
+
+  &-input__element {
+    @apply mr-2;
+
+    @apply border;
+    @apply border-gray-300;
+    @apply rounded;
+
+    @apply transition-colors;
+  }
+
+  &--active {
+    .checkbox-input__element {
+      @apply bg-primary-600;
+      @apply border-none;
+    }
+  }
+}

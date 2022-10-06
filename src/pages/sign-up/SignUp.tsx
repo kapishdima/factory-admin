@@ -1,5 +1,5 @@
-import { SignUpForm } from 'features/sign-up';
 import React from 'react';
+import { SignUpForm } from 'features/sign-up';
 
 import { Container, Heading, Spacer, Text, Logo, Link } from 'shared/ui';
 

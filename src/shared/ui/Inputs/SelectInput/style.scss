@@ -1,0 +1,55 @@
+.select {
+  @apply w-full;
+  @apply relative;
+
+  &-input {
+    @apply w-full;
+    @apply py-2.5;
+    @apply px-3.5;
+    @apply border;
+    @apply border-gray-300;
+    @apply rounded-lg;
+
+    @apply text-base;
+    @apply text-gray-700;
+    @apply font-normal;
+    @apply shadow-input;
+
+    @apply transition-colors;
+    @apply ease-linear;
+
+    @apply cursor-pointer;
+  }
+
+  &-dropdown {
+    @apply absolute;
+    @apply -z-10;
+    @apply w-full;
+    @apply mt-2;
+
+    @apply bg-gray-50;
+    @apply border;
+    @apply border-gray-300;
+    @apply rounded-lg;
+
+    @apply opacity-0;
+    @apply transition-all;
+
+    &--active {
+      @apply opacity-100;
+      @apply z-10;
+    }
+  }
+
+  &-option {
+    @apply px-3;
+    @apply py-2;
+    @apply rounded-lg;
+
+    @apply transition-colors;
+    @apply ease-linear;
+    @apply cursor-pointer;
+
+    @apply hover:bg-gray-100;
+  }
+}

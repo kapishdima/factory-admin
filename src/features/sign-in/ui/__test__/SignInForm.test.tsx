@@ -1,7 +1,7 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { fireEvent, render } from '@testing-library/react';
 import { SignInDTO } from 'entities/sign-in';
-import SignInForm from '../SignInForm';
+import { SignInForm } from '../SignInForm';
 
 const signInFormData: SignInDTO = {
   email: 'test@email.com',

@@ -3,7 +3,7 @@ import React from 'react';
 import { useSignIn } from 'entities/sign-in';
 import { Button, Checkbox, Container, Form, Spacer, TextField, PasswordField } from 'shared/ui';
 
-const SignInForm: React.FC = () => {
+export const SignInForm: React.FC = () => {
   const { onSubmit } = useSignIn();
 
   return (
@@ -21,4 +21,4 @@ const SignInForm: React.FC = () => {
   );
 };
 
-export default SignInForm;
+// export default SignInForm;

@@ -1,1 +1,3 @@
-export { default as SignInForm } from './ui/SignInForm';
+import { SignInForm } from './ui/SignInForm';
+
+export { SignInForm };

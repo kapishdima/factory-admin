@@ -2,6 +2,12 @@ import React from 'react';
 
 import { Button, Form, PasswordField, PhoneInput, Spacer, TextField } from 'shared/ui';
 import { useSignUp } from 'entities/sign-up/';
+import { SelectInput } from 'shared/ui/Inputs';
+
+const options = [
+  { value: 'individual', label: 'Individual' },
+  { value: 'company', label: 'Company' },
+];
 
 const SignUpForm: React.FC = () => {
   const { onSubmit } = useSignUp();
@@ -20,6 +26,8 @@ const SignUpForm: React.FC = () => {
         placeholder="Create a password"
         hint="Must be at least 8 characters."
       />
+      <Spacer bottom={5} />
+      <SelectInput label="User type" name="user_type" options={options} />
       <Spacer bottom={5} />
       <Button type="submit" primary text="Get started" />
     </Form>

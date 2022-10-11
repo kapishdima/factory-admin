@@ -1,7 +1,9 @@
+import React from 'react';
+
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { fireEvent, render } from '@testing-library/react';
+import { fireEvent, render, waitFor } from '@testing-library/react';
 import { SignInDTO } from 'entities/sign-in';
-import { SignInForm } from '../SignInForm';
+import SignInForm from '../SignInForm';
 
 const signInFormData: SignInDTO = {
   email: 'test@email.com',
@@ -28,6 +30,6 @@ describe('SignInForm', () => {
 
     fireEvent.submit(button);
 
-    expect(onSubmit).toBeCalledWith(signInFormData);
+    waitFor(() => expect(onSubmit).toBeCalledWith(signInFormData));
   });
 });

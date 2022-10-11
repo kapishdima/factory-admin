@@ -1,0 +1,37 @@
+.text-field {
+  @apply w-full;
+
+  &__label {
+    @apply pb-1.5;
+    @apply font-medium;
+    @apply text-sm;
+    @apply text-gray-700;
+  }
+
+  &__input {
+    @apply w-full;
+    @apply py-2.5;
+    @apply px-3.5;
+    @apply border;
+    @apply border-gray-300;
+    @apply rounded-lg;
+
+    @apply text-base;
+    @apply text-gray-700;
+    @apply font-normal;
+    @apply shadow-input;
+
+    @apply transition-colors;
+    @apply ease-linear;
+
+    &:focus {
+      @apply border-primary-700;
+    }
+
+    &::placeholder {
+      @apply text-base;
+      @apply text-gray-500;
+      @apply font-normal;
+    }
+  }
+}

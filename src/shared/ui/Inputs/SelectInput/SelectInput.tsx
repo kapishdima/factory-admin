@@ -10,10 +10,11 @@ import './style.scss';
 type SelectProps = React.HTMLProps<HTMLInputElement> & {
   options: SelectOption[];
   label: string;
+  name: string;
 };
 
 const SelectInput: React.FC<SelectProps> = ({ options, label, ...props }) => {
-  const { id, name = '', placeholder = 'Select option', ...htmlAttrs } = props;
+  const { name, placeholder = 'Select option' } = props;
   const { selected, isOpened, onSelectClick, onSelectOptionClick } = useSelect({
     name,
     placeholder,

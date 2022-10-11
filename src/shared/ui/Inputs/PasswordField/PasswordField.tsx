@@ -1,30 +1,34 @@
 import React from 'react';
 
-import { Spacer, Text } from 'shared/ui';
+import { Input, Spacer, Text } from 'shared/ui';
+import { InputAttrs } from '../Input/types';
 
 import './styles.scss';
 
-type PasswordFieldProps = React.HTMLProps<Omit<HTMLInputElement, 'ref'>> & {
+type PasswordFieldProps = InputAttrs & {
   label: string;
+  name: string;
   hint?: string;
 };
 
-const PasswordField = React.forwardRef<HTMLInputElement, PasswordFieldProps>(
-  ({ hint, label, ...props }, ref) => {
-    const { id = props.name, ...htmlAttrs } = props;
+const PasswordField: React.FC<PasswordFieldProps> = ({ hint, label, ...props }) => {
+  const { id = props.name, ...htmlAttrs } = props;
 
-    return (
-      <div className="text-field">
-        <label htmlFor={id} className="text-field__label">
-          {label}
-        </label>
+  return (
+    <Input {...htmlAttrs}>
+      {({ field }) => (
+        <div className="text-field">
+          <label htmlFor={id} className="text-field__label">
+            {label}
+          </label>
 
-        <input ref={ref} id={id} type="password" className="text-field__input" {...htmlAttrs} />
-        {hint && <PasswordFieldHint hint={hint} />}
-      </div>
-    );
-  },
-);
+          <input id={id} type="password" className="text-field__input" {...field} {...htmlAttrs} />
+          {hint && <PasswordFieldHint hint={hint} />}
+        </div>
+      )}
+    </Input>
+  );
+};
 
 const PasswordFieldHint: React.FC<{ hint: string }> = ({ hint }) => {
   return (

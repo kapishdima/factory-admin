@@ -1,7 +1,10 @@
+import React from 'react';
+
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
-import { fireEvent, render } from '@testing-library/react';
+import { fireEvent, render, waitFor } from '@testing-library/react';
 import { SignUpDTO } from 'entities/sign-up';
 import SignUpForm from '../SignUpForm';
+import { BrowserRouter, MemoryRouter } from 'react-router-dom';
 
 const signUpFormData: SignUpDTO = {
   name: 'TestName',
@@ -15,9 +18,11 @@ const signUpFormData: SignUpDTO = {
 const onSubmit = jest.fn();
 
 const withQueryClient = (
-  <QueryClientProvider client={new QueryClient()}>
-    <SignUpForm />
-  </QueryClientProvider>
+  <MemoryRouter>
+    <QueryClientProvider client={new QueryClient()}>
+      <SignUpForm />
+    </QueryClientProvider>
+  </MemoryRouter>
 );
 
 describe('SignUpForm', () => {
@@ -39,6 +44,6 @@ describe('SignUpForm', () => {
 
     fireEvent.submit(button);
 
-    expect(onSubmit).toBeCalledWith(signUpFormData);
+    waitFor(() => expect(onSubmit).toBeCalledWith(signUpFormData));
   });
 });

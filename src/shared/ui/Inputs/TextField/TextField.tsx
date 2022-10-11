@@ -1,31 +1,34 @@
 import React from 'react';
 
-import { Spacer, Text } from 'shared/ui';
+import { Input, Spacer, Text } from 'shared/ui';
+import { InputAttrs } from '../Input/types';
 
 import './styles.scss';
 
-type TextFieldProps = React.HTMLProps<Omit<HTMLInputElement, 'ref'>> & {
+type TextFieldProps = InputAttrs & {
   label: string;
+  name: string;
   hint?: string;
 };
 
-const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
-  ({ hint, label, ...props }, ref) => {
-    const { id = props.name, ...htmlAttrs } = props;
+const TextField: React.FC<TextFieldProps> = ({ hint, label, ...props }) => {
+  const { id = props.name, ...htmlAttrs } = props;
 
-    return (
-      <div className="text-field">
-        <label htmlFor={id} className="text-field__label">
-          {label}
-        </label>
+  return (
+    <Input {...htmlAttrs}>
+      {({ field }) => (
+        <div className="text-field">
+          <label htmlFor={id} className="text-field__label">
+            {label}
+          </label>
 
-        <input ref={ref} id={id} type="text" className="text-field__input" {...htmlAttrs} />
-        {hint && <TextFieldHint hint={hint} />}
-      </div>
-    );
-  },
-);
-
+          <input id={id} type="text" className="text-field__input" {...field} {...htmlAttrs} />
+          {hint && <TextFieldHint hint={hint} />}
+        </div>
+      )}
+    </Input>
+  );
+};
 const TextFieldHint: React.FC<{ hint: string }> = ({ hint }) => {
   return (
     <>

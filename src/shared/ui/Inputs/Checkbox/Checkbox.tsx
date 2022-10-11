@@ -11,6 +11,7 @@ import './styles.scss';
 type CheckboxProps = React.HTMLProps<HTMLInputElement> & {
   label?: string;
   checked?: boolean;
+  name: string;
 };
 
 const Checkbox: React.FC<CheckboxProps> = ({ label, checked, ...props }) => {

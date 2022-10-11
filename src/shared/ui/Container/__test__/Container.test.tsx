@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { render, screen } from '@testing-library/react';
 import Container from '../Container';
 
@@ -36,7 +38,7 @@ describe('Container', () => {
     expect(container).toHaveClass('w-full');
   });
 
-  it('should have custom class name', async () => {
+  it('should have extra class name', async () => {
     render(<Container className="custom" data-testid={TEST_ID} />);
     const container = screen.getByTestId(TEST_ID);
 

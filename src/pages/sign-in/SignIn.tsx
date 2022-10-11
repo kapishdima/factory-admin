@@ -2,6 +2,7 @@ import React from 'react';
 import { SignInForm } from 'features/sign-in';
 
 import { Container, Heading, Spacer, Text, Logo, Link } from 'shared/ui';
+import { Routes } from 'app/router';
 
 const SignIn: React.FC = () => {
   return (
@@ -23,8 +24,8 @@ const SignIn: React.FC = () => {
         <SignInForm />
         <Spacer bottom={5} />
         <Text size="sm" color="text-gray-600">
-          Don't have an account?
-          <Link to="/sign-up">
+          Dont have an account?
+          <Link to={Routes.SignUp}>
             <Text size="sm" weight="600" color="text-primary-700">
               {' '}
               Sign up

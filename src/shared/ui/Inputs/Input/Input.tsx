@@ -1,23 +1,21 @@
 import React from 'react';
-import { FieldValues, UseFormRegister, UseFormRegisterReturn } from 'react-hook-form';
-import { FormChild } from 'shared/ui/Form/Form';
+import { useController, UseControllerReturn, useFormContext } from 'react-hook-form';
+import { InputAttrs, TextAreaAttrs } from './types';
 
-export type InputRef = Pick<UseFormRegisterReturn, 'ref'>;
-type InputProps = {
-  children: FormChild;
-  register: UseFormRegister<FieldValues>;
+type InputChild = (attrs: UseControllerReturn) => JSX.Element;
+type InputProps = (InputAttrs | TextAreaAttrs) & {
+  children: InputChild;
 };
 
-const Input: React.FC<InputProps> = (props) => {
-  const { register, children } = props;
-
-  if (!children.props.name) {
-    throw new Error('Input name is required');
+const Input: React.FC<InputProps> = ({ name, children, ...attrs }) => {
+  if (!name) {
+    throw new Error('Name is required');
   }
 
-  const inputAttrs = register(children.props.name);
+  const { control } = useFormContext();
+  const inputAttrs = useController({ name, control });
 
-  return React.cloneElement(children, { ...inputAttrs });
+  return children(inputAttrs);
 };
 
 export default Input;

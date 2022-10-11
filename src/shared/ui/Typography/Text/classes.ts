@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 
-export type TextSizes = 'sm' | 'md' | 'xs';
+export type TextSizes = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 export type TextWeights = '800' | '700' | '600' | '500' | '400' | 'bold' | 'normal';
 
 type GetClassesArgs = {
@@ -10,9 +10,11 @@ type GetClassesArgs = {
 };
 
 const Sizes = {
-  xs: 'test-xs',
+  xs: 'text-xs',
   sm: 'text-sm',
   md: 'text-base',
+  lg: 'text-lg',
+  xl: 'text-xl',
 };
 
 const Weights = {

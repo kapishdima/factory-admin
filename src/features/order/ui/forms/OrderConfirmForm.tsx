@@ -2,7 +2,7 @@ import React from 'react';
 
 import {
   Container,
-  TextField,
+  TextInput,
   TextAreaInput,
   Spacer,
   DropzoneInput,
@@ -22,7 +22,7 @@ const OrderConfirmForm: React.FC = () => {
       <Container display="flex" direction="column" yAlignment="center">
         <Container display="flex" xAlignment="justify-between" className="gap-x-6">
           <Container className="flex flex-col w-full h-full flex-1 gap-y-5">
-            <TextField name="name" label="Project Name" placeholder="Enter your project name" />
+            <TextInput name="name" label="Project Name" placeholder="Enter your project name" />
             <TextAreaInput
               name="description"
               label="Project Description"

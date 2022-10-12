@@ -1,9 +1,8 @@
 import { Text, Heading, Link } from './Typography';
 import {
-  TextField,
+  TextInput,
   Checkbox,
-  Input,
-  PasswordField,
+  PasswordInput,
   PhoneInput,
   TextAreaInput,
   DropzoneInput,
@@ -16,15 +15,15 @@ export { default as Logo } from './Logo/Logo';
 export { default as Form } from './Form/Form';
 export { default as Card } from './Card/Card';
 export { default as Badge } from './Badge/Badge';
+export { default as Spinner } from './Spinner/Spinner';
 
 export {
   Text,
   Heading,
-  TextField,
+  TextInput,
   Checkbox,
   Link,
-  Input,
-  PasswordField,
+  PasswordInput,
   PhoneInput,
   TextAreaInput,
   DropzoneInput,

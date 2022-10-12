@@ -1,8 +1,10 @@
 import React from 'react';
 
-import { Container, Input } from 'shared/ui';
 import { usePhoneInput } from './hooks/usePhoneInput';
 import { InputAttrs } from '../Input/types';
+
+import InputField from '../Input/InputField';
+import { useInput } from '../Input/hook/useInput';
 
 import 'intl-tel-input/build/css/intlTelInput.css';
 import './style.scss';
@@ -16,22 +18,15 @@ type PhoneInputProps = InputAttrs & {
 const DEFAULT_ID = 'tel-input';
 const COUNRTY_FIELD_NAME = 'country_code';
 
-const PhoneInput: React.FC<PhoneInputProps> = ({ label, ...props }) => {
+const PhoneInput: React.FC<PhoneInputProps> = ({ label, hint, ...props }) => {
   const { id = DEFAULT_ID, ...htmlAttrs } = props;
+  const { attrs, classes } = useInput({ name: props.name });
   usePhoneInput({ id, name: COUNRTY_FIELD_NAME });
 
   return (
-    <Input {...htmlAttrs}>
-      {({ field }) => (
-        <Container display="flex" direction="column" width="w-full" className="text-field">
-          <label htmlFor={id} className="text-field__label">
-            {label}
-          </label>
-
-          <input id={id} type="text" className="text-field__input" {...field} {...htmlAttrs} />
-        </Container>
-      )}
-    </Input>
+    <InputField id={id} label={label} hint={hint} errors={attrs.fieldState.error}>
+      <input id={id} type="text" className={classes} {...attrs.field} {...htmlAttrs} />
+    </InputField>
   );
 };
 

@@ -1,9 +1,7 @@
 import React from 'react';
 
 import { Container, Spacer } from 'shared/ui';
-import { OrderConfirmForm } from 'features/order';
-
-import OrderLayout from '../layout/OrderLayout';
+import { OrderConfirmForm, OrderLayout } from 'features/order';
 
 const OrderConfirmStep: React.FC = () => {
   return (

@@ -1,9 +1,9 @@
+import classNames from 'classnames';
 import React from 'react';
 
-import { Input, Spacer, Text } from 'shared/ui';
+import { useInput } from '../Input/hook/useInput';
+import InputField from '../Input/InputField';
 import { TextAreaAttrs } from '../Input/types';
-
-import './styles.scss';
 
 type TextAreaInputProps = TextAreaAttrs & {
   label: string;
@@ -14,31 +14,17 @@ type TextAreaInputProps = TextAreaAttrs & {
 
 const TextAreaInput: React.FC<TextAreaInputProps> = ({ hint, label, height, ...props }) => {
   const { id = props.name, ...htmlAttrs } = props;
+  const { attrs, classes } = useInput({ name: props.name });
 
   return (
-    <Input {...htmlAttrs}>
-      {({ field }) => (
-        <div className="text-field h-full" style={{ height }}>
-          <label htmlFor={id} className="text-field__label">
-            {label}
-          </label>
-
-          <textarea id={id} className="text-field__input h-full flex" {...field} {...htmlAttrs} />
-          {hint && <TextAreaInputHint hint={hint} />}
-        </div>
-      )}
-    </Input>
-  );
-};
-
-const TextAreaInputHint: React.FC<{ hint: string }> = ({ hint }) => {
-  return (
-    <>
-      <Spacer top={2}></Spacer>
-      <Text size="sm" color="text-gray-600">
-        {hint}
-      </Text>
-    </>
+    <InputField id={id} label={label} hint={hint} errors={attrs.fieldState.error}>
+      <textarea
+        id={id}
+        className={classNames(classes, 'h-full flex')}
+        {...attrs.field}
+        {...htmlAttrs}
+      />
+    </InputField>
   );
 };
 

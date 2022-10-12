@@ -1,10 +1,11 @@
 import React from 'react';
+import { MemoryRouter } from 'react-router-dom';
 
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
-import { fireEvent, render, waitFor } from '@testing-library/react';
+import { fireEvent, render, waitFor, act } from '@testing-library/react';
+
 import { SignUpDTO } from 'entities/sign-up';
 import SignUpForm from '../SignUpForm';
-import { BrowserRouter, MemoryRouter } from 'react-router-dom';
 
 const signUpFormData: SignUpDTO = {
   name: 'TestName',
@@ -36,10 +37,12 @@ describe('SignUpForm', () => {
     // const inputUserType = form.getByLabelText(/Password/);
     const button = form.getByRole('button');
 
-    fireEvent.input(inputEmail, { target: { value: signUpFormData.email } });
-    fireEvent.input(inputPassword, { target: { value: signUpFormData.password } });
-    fireEvent.input(inputName, { target: { value: signUpFormData.name } });
-    fireEvent.input(inputPhone, { target: { value: signUpFormData.mobile_no } });
+    act(() => {
+      fireEvent.input(inputEmail, { target: { value: signUpFormData.email } });
+      fireEvent.input(inputPassword, { target: { value: signUpFormData.password } });
+      fireEvent.input(inputName, { target: { value: signUpFormData.name } });
+      fireEvent.input(inputPhone, { target: { value: signUpFormData.mobile_no } });
+    });
     fireEvent.click(inputCountryCode);
 
     fireEvent.submit(button);

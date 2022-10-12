@@ -1,8 +1,8 @@
 import { http } from 'app/http/client';
-import { SignInDTO } from './sign-in.dto';
+import { SignInRequest, SignInResponse } from './types';
 
-export const signIn = async (payload: SignInDTO) => {
-  const { data } = await http.post('users/login', payload);
+export const signIn = async (payload: SignInRequest) => {
+  const { data } = await http.post<SignInResponse>('users/login', payload);
 
   return data;
 };

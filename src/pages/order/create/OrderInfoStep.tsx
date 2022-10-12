@@ -1,9 +1,7 @@
 import React from 'react';
 
-import { OrderInfoForm } from 'features/order';
+import { OrderInfoForm, OrderLayout } from 'features/order';
 import { Container, Heading, Spacer, Text } from 'shared/ui';
-
-import OrderLayout from '../layout/OrderLayout';
 
 const OrderInfoStep: React.FC = () => {
   return (

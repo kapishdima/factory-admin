@@ -1,19 +1,27 @@
 import React from 'react';
+import Container from '../Container/Container';
+import Spinner from '../Spinner/Spinner';
 
 import { getClasses } from './classes';
-import './style.scss';
 
 type ButtonProps = React.HTMLProps<HTMLButtonElement> & {
+  text: string;
   primary?: boolean;
   type?: 'submit' | 'reset' | 'button';
-  text: string;
+  loading?: boolean;
 };
 
-const Button: React.FC<ButtonProps> = ({ primary = true, text, ...attrs }) => {
+const Button: React.FC<ButtonProps> = ({ primary = true, text, loading, ...attrs }) => {
   const classes = getClasses({ primary });
   return (
-    <button className={classes} {...attrs}>
-      {text}
+    <button className={classes} disabled={loading} {...attrs}>
+      {loading ? (
+        <Container display="flex" yAlignment="center" xAlignment="center" className="gap-x-3">
+          <Spinner />
+        </Container>
+      ) : (
+        text
+      )}
     </button>
   );
 };

@@ -8,7 +8,7 @@ import { SignUpDTO } from '../sign-up.dto';
 
 export const useSignUp = () => {
   const navigate = useNavigate();
-  const { mutate } = useMutation(signUp, {
+  const { mutate, isLoading } = useMutation(signUp, {
     onSuccess: () => {
       toast('You have successfully registered', { type: 'success', theme: 'colored' });
       navigate(Routes.SignIn);
@@ -21,5 +21,5 @@ export const useSignUp = () => {
     mutate(data);
   };
 
-  return { onSubmit };
+  return { onSubmit, isLoading };
 };

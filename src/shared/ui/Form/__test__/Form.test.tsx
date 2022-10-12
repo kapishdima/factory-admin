@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { fireEvent, render, screen } from '@testing-library/react';
-import { Button, TextField } from 'shared/ui';
+import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { Button, TextInput } from 'shared/ui';
 import Form from '../Form';
 
 const TEST_ID = 'test-Form';
 
-const onSubmit = jest.fn((values: any) => console.log(values));
+const onSubmit = jest.fn();
 const inputNames = ['name', 'email'];
 const formValues = {
   name: 'test_name',
@@ -16,8 +16,8 @@ const formValues = {
 const TestForm = () => {
   return (
     <Form onSubmit={onSubmit} data-testid={TEST_ID}>
-      <TextField label="Name" name="name" placeholder="Name" />
-      <TextField label="Email" name="email" placeholder="Email" />
+      <TextInput label="Name" name="name" placeholder="Name" />
+      <TextInput label="Email" name="email" placeholder="Email" />
       <Button type="submit" text="Submit" />
     </Form>
   );
@@ -45,12 +45,13 @@ describe('Form', () => {
     const inputEmail = form.getByPlaceholderText('Email');
     const button = form.getByRole('button');
 
-    fireEvent.input(inputName, { target: { value: formValues['name'] } });
-    fireEvent.input(inputEmail, { target: { value: formValues['email'] } });
+    act(() => {
+      fireEvent.input(inputName, { target: { value: formValues['name'] } });
+      fireEvent.input(inputEmail, { target: { value: formValues['email'] } });
+    });
 
     fireEvent.submit(button);
 
     // await waitFor(() => expect(onSubmit).toHaveBeenCalledWith(formValues));
-    // await waitFor(() => expect(onSubmit.mock.calls).toContain(formValues));
   });
 });

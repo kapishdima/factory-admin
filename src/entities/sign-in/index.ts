@@ -1,6 +1,6 @@
 import { signIn } from './api';
-import { SignInDTO } from './sign-in.dto';
+import { SignInRequest, SignInResponse } from './types';
 import { useSignIn } from './hook/useSignIn';
 
-export type { SignInDTO };
+export type { SignInRequest, SignInResponse };
 export { signIn, useSignIn };

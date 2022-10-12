@@ -20,7 +20,6 @@ type FormProps = {
 const Form: React.FC<FormProps> = ({ values, onSubmit, children, className }) => {
   const form = useForm({ defaultValues: values });
   const clasess = getClasses();
-  console.log('values', values);
 
   return (
     <FormProvider {...form}>

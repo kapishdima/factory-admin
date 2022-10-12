@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Button, Form, PasswordField, PhoneInput, TextField } from 'shared/ui';
+import { Button, Form, PasswordInput, PhoneInput, TextInput } from 'shared/ui';
 import { useSignUp } from 'entities/sign-up/';
 import { SelectInput } from 'shared/ui/Inputs';
 
@@ -10,21 +10,21 @@ const options = [
 ];
 
 const SignUpForm: React.FC = () => {
-  const { onSubmit } = useSignUp();
+  const { onSubmit, isLoading } = useSignUp();
 
   return (
     <Form onSubmit={onSubmit}>
-      <TextField label="Name" name="name" placeholder="Enter your name" />
-      <TextField label="Email" name="email" placeholder="Enter your email" />
+      <TextInput label="Name" name="name" placeholder="Enter your name" />
+      <TextInput label="Email" name="email" placeholder="Enter your email" />
       <PhoneInput label="Phone" name="mobile_no" id="phone" placeholder="Enter your phone number" />
-      <PasswordField
+      <PasswordInput
         label="Password"
         name="password"
         placeholder="Create a password"
         hint="Must be at least 8 characters."
       />
       <SelectInput label="User type" name="user_type" options={options} />
-      <Button type="submit" primary text="Get started" />
+      <Button loading={isLoading} type="submit" primary text="Get started" />
     </Form>
   );
 };

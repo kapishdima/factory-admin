@@ -1,12 +1,14 @@
 import React from 'react';
 
-import { OrderServicesList } from 'features/order';
-import { Button, Container, Spacer } from 'shared/ui';
+import {
+  OrderServicesList,
+  OrderLayout,
+  useOrderCreationFlow,
+  useOrderService,
+} from 'features/order';
 
-import OrderLayout from '../layout/OrderLayout';
-import { useOrderCreationFlow } from 'features/order/hook/useOrderCreationFlow';
 import { Service } from 'entities/order';
-import { useOrderService } from 'features/order/hook/useOrderService';
+import { Button, Container, Spacer } from 'shared/ui';
 
 const services: Service[] = [
   {

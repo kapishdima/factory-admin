@@ -8,6 +8,9 @@ import {
   SignUpPage,
 } from 'pages';
 import { RouteObject } from 'react-router-dom';
+import { getServices } from 'entities/order';
+import { Protected } from './Protected';
+import ErrorBoundary from 'app/errors';
 
 export enum Routes {
   Main = '/',
@@ -25,45 +28,55 @@ export const routes: RouteObject[] = [
   {
     path: Routes.Main,
     element: <div>Main</div>,
-    // loader: () => {},
   },
   {
     path: Routes.SignIn,
     element: <SignInPage />,
-    // loader: () => {},
   },
   {
     path: Routes.SignUp,
     element: <SignUpPage />,
-    // loader: () => {},
   },
   {
     path: Routes.Order,
     children: [
       {
         path: Routes.OrderCreation,
-        element: <OrderInfoStep />,
-        // loader: () => {}
+        element: (
+          <Protected>
+            <OrderInfoStep />
+          </Protected>
+        ),
+        errorElement: <ErrorBoundary />,
       },
       {
         path: Routes.OrderSelectService,
-        element: <OrderSelectServiceStep />,
-        // loader: () => {}
+        element: (
+          <Protected>
+            <OrderSelectServiceStep />
+          </Protected>
+        ),
+        loader: async () => {
+          return getServices();
+        },
+        errorElement: <ErrorBoundary />,
       },
       {
         path: Routes.OrderConfirm,
-        element: <OrderConfirmStep />,
-        // loader: () => {}
+        element: (
+          <Protected>
+            <OrderConfirmStep />
+          </Protected>
+        ),
+        errorElement: <ErrorBoundary />,
       },
       {
         path: `${Routes.OrderDetails}/:id`,
         element: <div>Order Details</div>,
-        // loader: () => {}
       },
       {
         path: `${Routes.OrderUpdate}/:id`,
         element: <div>Order Update</div>,
-        // loader: () => {}
       },
     ],
   },

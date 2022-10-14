@@ -1,16 +1,12 @@
-const STORAGE_KEY = 'token';
+import { getToken } from 'entities/token';
 
 export const useAuth = () => {
-  const setToken = (token: string) => {
-    localStorage.setItem(STORAGE_KEY, token);
-  };
-
   const isAuth = () => {
-    return Boolean(localStorage.getItem(STORAGE_KEY));
+    return Boolean(getToken());
   };
 
   return {
-    setToken,
     isAuth,
+    getToken,
   };
 };

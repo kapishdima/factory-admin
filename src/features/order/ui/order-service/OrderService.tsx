@@ -15,10 +15,11 @@ const OrderService: React.FC<OrderServiceProps> = ({
   description,
   price,
   selected,
+  offer_text,
   onClick,
 }) => {
   return (
-    <Container className="flex-1" style={{ height: 294 }} onClick={onClick}>
+    <Container width="w-full" style={{ height: 294 }} onClick={onClick}>
       <Card
         isActive={selected}
         rounded
@@ -35,7 +36,7 @@ const OrderService: React.FC<OrderServiceProps> = ({
           </Container>
         }>
         <Container display="flex" direction="column">
-          <Badge color="green">Limited time only</Badge>
+          <Badge color="green">{offer_text}</Badge>
           <Spacer bottom={4} />
           <Heading weight="600">${price}</Heading>
           <Spacer bottom={1} />

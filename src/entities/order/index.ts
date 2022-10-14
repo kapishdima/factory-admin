@@ -1,3 +1,5 @@
-import { Service } from './types';
+import { Service, OrderRequest } from './types';
+import { getServices, createOrder } from './api';
 
-export type { Service };
+export type { Service, OrderRequest };
+export { getServices, createOrder };

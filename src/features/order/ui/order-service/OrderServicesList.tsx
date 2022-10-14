@@ -19,7 +19,7 @@ const OrderServicesList: React.FC<OrderServicesListProps> = ({
   return (
     <Container display="flex" className="flex-wrap gap-4 pt-9" xAlignment="center">
       {services.map((service) => (
-        <Container width="w-1/4" key={service.name}>
+        <Container display="flex" width="w-2/5" key={service.name}>
           <OrderService
             onClick={() => onServiceClick(service)}
             selected={selected?.name === service.name}

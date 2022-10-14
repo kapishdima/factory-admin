@@ -7,48 +7,17 @@ import {
   useOrderService,
 } from 'features/order';
 
-import { Service } from 'entities/order';
 import { Button, Container, Spacer } from 'shared/ui';
-
-const services: Service[] = [
-  {
-    name: 'Schematic design',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation',
-    price: 10,
-  },
-  {
-    name: 'PCB Design',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation',
-    price: 10,
-  },
-  {
-    name: 'Schematic + PCB Design',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation',
-    price: 10,
-  },
-  {
-    name: 'PCB Manufacturing',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation',
-    price: 10,
-  },
-  {
-    name: 'Schematic + PCB + Manufaturing',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation',
-    price: 10,
-  },
-];
+import { useLoaderData } from 'react-router-dom';
+import { Service } from 'entities/order';
 
 const OrderSelectServiceStep: React.FC = () => {
   const { service, onServiceClick } = useOrderService();
   const { saveOrderService } = useOrderCreationFlow();
+  const services = useLoaderData() as Service[];
 
   const onClick = () => {
-    saveOrderService({ service });
+    saveOrderService(service);
   };
 
   return (

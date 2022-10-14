@@ -7,7 +7,7 @@ const OrderInfoForm: React.FC = () => {
   const { saveOrderInfo } = useOrderCreationFlow();
   return (
     <Form onSubmit={saveOrderInfo}>
-      <TextInput name="name" label="Project Name" placeholder="Enter your project name" />
+      <TextInput name="project_name" label="Project Name" placeholder="Enter your project name" />
       <TextAreaInput
         name="description"
         label="Project Description"

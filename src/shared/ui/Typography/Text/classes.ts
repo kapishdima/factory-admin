@@ -2,11 +2,13 @@ import classNames from 'classnames';
 
 export type TextSizes = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 export type TextWeights = '800' | '700' | '600' | '500' | '400' | 'bold' | 'normal';
+export type TextAlign = 'center' | 'left' | 'right';
 
 type GetClassesArgs = {
   size: TextSizes;
   weight: TextWeights;
   color: string;
+  align: TextAlign;
 };
 
 const Sizes = {
@@ -27,6 +29,6 @@ const Weights = {
   normal: 'font-normal',
 };
 
-export const getClasses = ({ size, weight, color }: GetClassesArgs) => {
-  return classNames(Sizes[size], Weights[weight], color);
+export const getClasses = ({ size, weight, color, align }: GetClassesArgs) => {
+  return classNames(Sizes[size], Weights[weight], color, `text-${align}`);
 };

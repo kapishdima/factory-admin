@@ -1,12 +1,13 @@
 import React from 'react';
 
 import { Container } from 'shared/ui';
-import { getClasses } from './classes';
+import { CardSizes, getClasses } from './classes';
 
 type CardProps = {
   rounded?: boolean;
   header?: JSX.Element;
   isActive?: boolean;
+  size?: CardSizes;
 };
 
 const Card: React.FC<React.PropsWithChildren<CardProps>> = ({
@@ -14,12 +15,21 @@ const Card: React.FC<React.PropsWithChildren<CardProps>> = ({
   header,
   isActive,
   children,
+  size,
 }) => {
-  const { core, header: headerClassNames } = getClasses({ rounded, isActive });
+  const {
+    core,
+    body,
+    header: headerClassNames,
+  } = getClasses({
+    rounded: rounded || true,
+    isActive: isActive || false,
+    size: size || 'md',
+  });
   return (
-    <Container className={core}>
+    <Container height="h-full" className={core}>
       {header && <Container className={headerClassNames}>{header}</Container>}
-      <Container className="p-4">{children}</Container>
+      <Container className={body}>{children}</Container>
     </Container>
   );
 };

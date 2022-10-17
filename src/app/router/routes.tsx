@@ -7,7 +7,7 @@ import {
   SignInPage,
   SignUpPage,
 } from 'pages';
-import { RouteObject } from 'react-router-dom';
+import { Navigate, RouteObject } from 'react-router-dom';
 import { getServices } from 'entities/order';
 import { Protected } from './Protected';
 import ErrorBoundary from 'app/errors';
@@ -27,7 +27,7 @@ export enum Routes {
 export const routes: RouteObject[] = [
   {
     path: Routes.Main,
-    element: <div>Main</div>,
+    element: <Navigate to={Routes.SignIn} />,
   },
   {
     path: Routes.SignIn,
@@ -39,6 +39,7 @@ export const routes: RouteObject[] = [
   },
   {
     path: Routes.Order,
+    element: <Protected></Protected>,
     children: [
       {
         path: Routes.OrderCreation,

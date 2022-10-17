@@ -1,6 +1,8 @@
 import { signUp } from './api';
-import { SignUpDTO } from './sign-up.dto';
+import { SignUpRequest } from './types';
 import { useSignUp } from './hook/useSignUp';
 
-export type { SignUpDTO };
-export { signUp, useSignUp };
+import { signUpSchema } from './validation';
+
+export type { SignUpRequest };
+export { signUp, useSignUp, signUpSchema };

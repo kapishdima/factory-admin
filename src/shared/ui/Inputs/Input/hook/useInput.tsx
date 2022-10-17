@@ -10,9 +10,12 @@ export const useInput = ({ name }: UseInputArgs) => {
     throw new Error('Name is required');
   }
 
-  const classes = getInputClasses();
   const form = useFormContext();
   const attrs = useController({ name, control: form.control, defaultValue: '' });
+
+  const isValid = !attrs.fieldState.error;
+
+  const classes = getInputClasses({ isValid });
 
   return { attrs, classes };
 };

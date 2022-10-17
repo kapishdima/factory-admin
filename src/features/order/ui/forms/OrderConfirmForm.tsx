@@ -30,6 +30,7 @@ const OrderConfirmForm: React.FC<OrderConfirmFormProps> = ({ hasAddress }) => {
         <Container width="w-full" display="flex" xAlignment="justify-between" className="gap-x-6">
           <Container display="flex" direction="column" className="flex-1 gap-y-5">
             <TextInput
+              required
               name="project_name"
               label="Project Name"
               placeholder="Enter your project name"

@@ -13,7 +13,7 @@ type UseSelectArgs = {
 
 export const useSelect = ({ name, placeholder }: UseSelectArgs) => {
   const DEFAUL_SELECTED_OPTION = { value: '', label: placeholder };
-  const [isOpened, setOpen] = useState(false);
+  const [opened, setOpen] = useState(false);
   const [selected, setSelected] = useState<SelectOption>(DEFAUL_SELECTED_OPTION);
   const form = useFormContext();
 
@@ -26,7 +26,7 @@ export const useSelect = ({ name, placeholder }: UseSelectArgs) => {
   };
 
   const onSelectClick = () => {
-    isOpened ? close() : open();
+    opened ? close() : open();
   };
 
   const onSelectOptionClick = (option: SelectOption) => {
@@ -35,5 +35,5 @@ export const useSelect = ({ name, placeholder }: UseSelectArgs) => {
     close();
   };
 
-  return { onSelectClick, onSelectOptionClick, selected, isOpened };
+  return { onSelectClick, onSelectOptionClick, selected, opened };
 };

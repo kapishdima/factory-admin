@@ -12,7 +12,8 @@ type InputFieldProps = {
 };
 
 const InputField: React.FC<InputFieldProps> = ({ id, label, hint, errors, children }) => {
-  const classes = getClasses();
+  const isValid = !errors;
+  const classes = getClasses({ isValid });
 
   return (
     <div className={classes.container}>
@@ -22,7 +23,7 @@ const InputField: React.FC<InputFieldProps> = ({ id, label, hint, errors, childr
         </label>
       )}
       {children}
-      {hint && (
+      {hint && !errors && (
         <>
           <Spacer top={2}></Spacer>
           <Text size="sm" color="text-gray-600">
@@ -33,7 +34,7 @@ const InputField: React.FC<InputFieldProps> = ({ id, label, hint, errors, childr
       {errors && (
         <>
           <Spacer top={2}></Spacer>
-          <Text size="sm" color="text-gray-600">
+          <Text size="sm" color="text-error-700">
             {errors.message}
           </Text>
         </>

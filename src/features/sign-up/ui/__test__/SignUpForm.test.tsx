@@ -4,10 +4,10 @@ import { MemoryRouter } from 'react-router-dom';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { fireEvent, render, waitFor, act } from '@testing-library/react';
 
-import { SignUpDTO } from 'entities/sign-up';
+import { SignUpRequest } from 'entities/sign-up';
 import SignUpForm from '../SignUpForm';
 
-const signUpFormData: SignUpDTO = {
+const signUpFormData: SignUpRequest = {
   name: 'TestName',
   email: 'test@email.com',
   mobile_no: '1234567890',

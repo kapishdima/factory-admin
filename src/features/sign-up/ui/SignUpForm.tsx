@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Button, Form, PasswordInput, PhoneInput, TextInput } from 'shared/ui';
-import { useSignUp } from 'entities/sign-up/';
+import { signUpSchema, useSignUp } from 'entities/sign-up/';
 import { SelectInput } from 'shared/ui/Inputs';
 
 const options = [
@@ -13,9 +13,9 @@ const SignUpForm: React.FC = () => {
   const { onSubmit, isLoading } = useSignUp();
 
   return (
-    <Form onSubmit={onSubmit}>
+    <Form onSubmit={onSubmit} schema={signUpSchema}>
       <TextInput label="Name" name="name" placeholder="Enter your name" />
-      <TextInput label="Email" name="email" placeholder="Enter your email" />
+      <TextInput label="Email" type="email" name="email" placeholder="Enter your email" />
       <PhoneInput label="Phone" name="mobile_no" id="phone" placeholder="Enter your phone number" />
       <PasswordInput
         label="Password"

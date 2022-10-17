@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import { signUp } from '../api';
-import { SignUpDTO } from '../sign-up.dto';
+import { SignUpRequest } from '../types';
 
 export const useSignUp = () => {
   const navigate = useNavigate();
@@ -17,7 +17,7 @@ export const useSignUp = () => {
       toast(error.message, { type: 'error', theme: 'colored' });
     },
   });
-  const onSubmit = async (data: SignUpDTO) => {
+  const onSubmit = async (data: SignUpRequest) => {
     mutate(data);
   };
 

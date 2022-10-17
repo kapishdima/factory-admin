@@ -18,6 +18,9 @@ export const useOrderCreationFlow = () => {
   };
 
   const saveOrderService = (service: Service) => {
+    if (!service) {
+      return toast('Please, select service', { type: 'error', theme: 'colored' });
+    }
     navigate(Routes.OrderConfirm, { state: { ...location.state, service } });
   };
 

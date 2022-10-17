@@ -1,9 +1,11 @@
-import classNames from 'classnames';
 import React from 'react';
+import classNames from 'classnames';
 
+import { yupResolver } from '@hookform/resolvers/yup';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 
 import { getClasses } from './classes';
+import { AnyObjectSchema } from 'yup';
 
 export type FormChild = React.ReactElement<
   React.HTMLProps<HTMLInputElement>,
@@ -15,10 +17,14 @@ type FormProps = {
   width?: string;
   className?: string;
   values?: any;
+  schema?: AnyObjectSchema;
 };
 
-const Form: React.FC<FormProps> = ({ values, onSubmit, children, className }) => {
-  const form = useForm({ defaultValues: values });
+const Form: React.FC<FormProps> = ({ values, onSubmit, children, className, schema }) => {
+  const form = useForm({
+    defaultValues: values,
+    resolver: schema ? yupResolver(schema) : undefined,
+  });
   const clasess = getClasses();
 
   return (

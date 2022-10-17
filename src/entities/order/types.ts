@@ -6,7 +6,8 @@ export type Service = {
   currency: string;
   description: string;
   active: boolean;
-  valid_upto: null;
+  valid_upto: any;
+  show_address: boolean;
 };
 
 export type ServiceResponse = {
